@@ -110,7 +110,7 @@ const JSON_content = {
                 "question": "Какая особенность синхронной траектории \\(y_s(t)\\) отличает её от тривиальных решений?",
                 "answers": [
                 {
-                    "text": "Она нестабильна и не стремится к нулю при \\(t \\rightarrow \\infty\\)",
+                    "text": "Она может быть нестабильной и не стремиться к нулю при \\(t \\rightarrow \\infty\\)",
                     "correct": true
                 },
                 {
@@ -165,24 +165,6 @@ const JSON_content = {
                 "type": "multiple"
             },
             {
-                "question": "Какие предположения делаются о системах в задаче синхронизации?",
-                "answers": [
-                {
-                    "text": "Агенты могут иметь индивидуальную динамику",
-                    "correct": true
-                },
-                {
-                    "text": "Локальные контроллеры могут иметь любые динамические компоненты",
-                    "correct": true
-                },
-                {
-                    "text": "Топология связи выбирается свободно",
-                    "correct": true
-                }
-                ],
-                "type": "multiple"
-            },
-            {
                 "question": "На какой информации основана обратная связь в сетевом контроллере?",
                 "answers": [
                 {
@@ -199,28 +181,6 @@ const JSON_content = {
                 }
                 ],
                 "type": "single"
-            },
-            {
-                "question": "Какие аспекты синхронизации рассматриваются в главе? Выберите ВСЕ верные:",
-                "answers": [
-                {
-                    "text": "Условия синхронизируемости агентов",
-                    "correct": true
-                },
-                {
-                    "text": "Необходимые и достаточные условия асимптотической синхронизации",
-                    "correct": true
-                },
-                {
-                    "text": "Соединения, вводимые сетевым контроллером",
-                    "correct": true
-                },
-                {
-                    "text": "Определение оптимальной топологии сети для всех случаев",
-                    "correct": false
-                }
-                ],
-                "type": "multiple"
             }
             ]
         }
@@ -340,204 +300,132 @@ const JSON_content = {
         "test": {
             "timeLimit": 600,
             "questions": [
+            {
+                "question": "Что представляет собой \\(u_i(t)\\) в модели агента?",
+                "answers": [
                 {
-                    "question": "Какова динамика состояния каждого агента \\(P_i\\)?",
-                    "answers": [
-                    {
-                        "text": "\\(\\dot{x}_i(t) = A x_i(t) + b u_i(t)\\), \\(y_i(t) = c^\\mathrm{T} x_i(t)\\)",
-                        "correct": true
-                    },
-                    {
-                        "text": "\\(\\dot{x}_i(t) = A x_i(t) + u_i(t)\\), \\(y_i(t) = x_i(t)\\)",
-                        "correct": false
-                    },
-                    {
-                        "text": "\\(x_i(t) = A x_i(t) + b u_i(t)\\), без производной",
-                        "correct": false
-                    }
-                    ],
-                    "type": "single"
+                    "text": "Входной скалярный сигнал",
+                    "correct": true
                 },
                 {
-                    "question": "Что представляет собой \\(u_i(t)\\) во модели агента?",
-                    "answers": [
-                    {
-                        "text": "Входной скалярный сигнал",
-                        "correct": true
-                    },
-                    {
-                        "text": "Выходной скалярный сигнал",
-                        "correct": false
-                    },
-                    {
-                        "text": "Вектор состояния",
-                        "correct": false
-                    }
-                    ],
-                    "type": "single"
+                    "text": "Выходной скалярный сигнал",
+                    "correct": false
                 },
                 {
-                    "question": "Сколько агентов описывается моделью и как они индексируются?",
-                    "answers": [
-                    {
-                        "text": "\\(i = 1, 2, \\ldots, N\\)",
-                        "correct": true
-                    },
-                    {
-                        "text": "\\(i = 0, 1, \\ldots, N-1\\)",
-                        "correct": false
-                    },
-                    {
-                        "text": "Только один агент \\(i=1\\)",
-                        "correct": false
-                    }
-                    ],
-                    "type": "single"
-                },
-                {
-                    "question": "Какие предположения делаются об агентах относительно \\(y_i(t)\\)? Выберите ВСЕ верные:",
-                    "answers": [
-                    {
-                        "text": "Агенты полностью наблюдаемы",
-                        "correct": true
-                    },
-                    {
-                        "text": "Матрица \\(A\\) всегда устойчива",
-                        "correct": false
-                    },
-                    {
-                        "text": "Собственные значения \\(A\\) имеют неотрицательную действительную часть",
-                        "correct": true
-                    }
-                    ],
-                    "type": "multiple"
-                },
-                {
-                    "question": "Что такое \\(x_i(0)\\)?",
-                    "answers": [
-                    {
-                        "text": "\\(x_{i0} \\) – начальное состояние",
-                        "correct": true
-                    },
-                    {
-                        "text": "Конечное состояние",
-                        "correct": false
-                    },
-                    {
-                        "text": "Выход в момент \\(t=0\\)",
-                        "correct": false
-                    }
-                    ],
-                    "type": "single"
-                },
-                {
-                    "question": "Как выражается входной сигнал \\(u_i(t)\\) сетевого контроллера в терминах соседей?",
-                    "answers": [
-                    {
-                        "text": "\\(u_i(t) = -\\sum_{j \\neq i} a_{ij} (y_i(t) - y_j(t))\\)",
-                        "correct": true
-                    },
-                    {
-                        "text": "\\(u_i(t) = \\sum_{j \\neq i} a_{ij} (y_i(t) + y_j(t))\\)",
-                        "correct": false
-                    },
-                    {
-                        "text": "\\(u_i(t) = -\\sum_{j \\neq i} a_{ij} x_i(t)\\)",
-                        "correct": false
-                    }
-                    ],
-                    "type": "single"
-                },
-                {
-                    "question": "Каково соотношение между матрицей смежности \\(A\\) и элементами матрицы Лапласа \\(L\\)?",
-                    "answers": [
-                    {
-                        "text": "\\(l_{ij} = -a_{ij} \\le 0\\) при \\(i \\neq j\\)",
-                        "correct": true
-                    },
-                    {
-                        "text": "\\(l_{ij} = a_{ij} \\ge 0\\) при \\(i \\neq j\\)",
-                        "correct": false
-                    },
-                    {
-                        "text": "\\(l_{ii} = -\\sum a_{ij} \\le 0\\)",
-                        "correct": false
-                    }
-                    ],
-                    "type": "single"
-                },
-                {
-                    "question": "Какая векторно-матричная форма описывает сетевой контроллер для всех агентов?",
-                    "answers": [
-                    {
-                        "text": "\\(u(t) = -L y(t)\\)",
-                        "correct": true
-                    },
-                    {
-                        "text": "\\(u(t) = L y(t)\\)",
-                        "correct": false
-                    },
-                    {
-                        "text": "\\(u(t) = A y(t)\\)",
-                        "correct": false
-                    }
-                    ],
-                    "type": "single"
-                },
-                {
-                    "question": "Как записывается динамика одного агента в модели сетевой системы?",
-                    "answers": [
-                    {
-                        "text": "\\(\\dot{x}_i(t) = A x_i(t) - b \\sum_{j=1}^N l_{ij} c^\\mathrm{T} x_j(t)\\)",
-                        "correct": true
-                    },
-                    {
-                        "text": "\\(\\dot{x}_i(t) = A x_i(t) + b \\sum_{j=1}^N l_{ij} c^\\mathrm{T} x_j(t)\\)",
-                        "correct": false
-                    },
-                    {
-                        "text": "\\(\\dot{x}_i(t) = A x_i(t) - \\sum_{j=1}^N l_{ij} x_j(t)\\)",
-                        "correct": false
-                    }
-                    ],
-                    "type": "single"
-                },
-                {
-                    "question": "Как выражается блочно-диагональная матрица \\(\\tilde{A}\\) через произведение Кронекера?",
-                    "answers": [
-                    {
-                        "text": "\\(\\tilde{A} = I_N \\otimes A\\)",
-                        "correct": true
-                    },
-                    {
-                        "text": "\\(\\tilde{A} = L \\otimes A\\)",
-                        "correct": false
-                    },
-                    {
-                        "text": "\\(\\tilde{A} = A \\otimes I_N\\)",
-                        "correct": false
-                    }
-                    ],
-                    "type": "single"
-                },
-                {
-                    "question": "Какая матрица определяет динамику общей системы \\(\\dot{x}(t) = \\bar{A} x(t)\\)?",
-                    "answers": [
-                    {
-                        "text": "\\(\\bar{A} = I_N \\otimes A - L \\otimes (b c^\\mathrm{T})\\)",
-                        "correct": true
-                    },
-                    {
-                        "text": "\\(\\bar{A} = \\tilde{A} + L \\otimes (b c^\\mathrm{T})\\)",
-                        "correct": false
-                    },
-                    {
-                        "text": "\\(\\bar{A} = I_N \\otimes A + \\tilde{B} L \\tilde{C}\\)",
-                        "correct": false
-                    }
-                    ],
-                    "type": "single"
+                    "text": "Вектор состояния",
+                    "correct": false
                 }
+                ],
+                "type": "single"
+            },
+            {
+                "question": "Какие предположения делаются об агентах относительно \\(y_i(t)\\)? Выберите ВСЕ верные:",
+                "answers": [
+                {
+                    "text": "Агенты полностью наблюдаемы",
+                    "correct": true
+                },
+                {
+                    "text": "Матрица \\(A\\) всегда устойчива",
+                    "correct": false
+                },
+                {
+                    "text": "Собственные значения \\(A\\) имеют неотрицательную действительную часть",
+                    "correct": true
+                }
+                ],
+                "type": "multiple"
+            },
+            {
+                "question": "Что такое \\(x_i(0)\\)?",
+                "answers": [
+                {
+                    "text": "Начальное состояние",
+                    "correct": true
+                },
+                {
+                    "text": "Конечное состояние",
+                    "correct": false
+                },
+                {
+                    "text": "Выход в момент \\(t=0\\)",
+                    "correct": false
+                }
+                ],
+                "type": "single"
+            },
+            {
+                "question": "Как выражается входной сигнал \\(u_i(t)\\) сетевого контроллера в терминах соседей?",
+                "answers": [
+                {
+                    "text": "\\(u_i(t) = -\\sum_{j \\neq i} a_{ij} (y_i(t) - y_j(t))\\)",
+                    "correct": true
+                },
+                {
+                    "text": "\\(u_i(t) = \\sum_{j \\neq i} a_{ij} (y_i(t) + y_j(t))\\)",
+                    "correct": false
+                },
+                {
+                    "text": "\\(u_i(t) = -\\sum_{j \\neq i} a_{ij} x_i(t)\\)",
+                    "correct": false
+                }
+                ],
+                "type": "single"
+            },
+            {
+                "question": "Каково соотношение между матрицей смежности \\(A\\) и элементами матрицы Лапласа \\(L\\)?",
+                "answers": [
+                {
+                    "text": "\\(l_{ij} = -a_{ij} \\le 0\\) при \\(i \\neq j\\)",
+                    "correct": true
+                },
+                {
+                    "text": "\\(l_{ij} = a_{ij} \\ge 0\\) при \\(i \\neq j\\)",
+                    "correct": false
+                },
+                {
+                    "text": "\\(l_{ii} = -\\sum a_{ij} \\le 0\\)",
+                    "correct": false
+                }
+                ],
+                "type": "single"
+            },
+            {
+                "question": "Какая векторно-матричная форма описывает сетевой контроллер для всех агентов?",
+                "answers": [
+                {
+                    "text": "\\(u(t) = -L y(t)\\)",
+                    "correct": true
+                },
+                {
+                    "text": "\\(u(t) = L y(t)\\)",
+                    "correct": false
+                },
+                {
+                    "text": "\\(u(t) = A y(t)\\)",
+                    "correct": false
+                }
+                ],
+                "type": "single"
+            },
+            {
+                "question": "Как выражается блочно-диагональная матрица \\(\\tilde{A}\\) через произведение Кронекера?",
+                "answers": [
+                {
+                    "text": "\\(\\tilde{A} = I_N \\otimes A\\)",
+                    "correct": true
+                },
+                {
+                    "text": "\\(\\tilde{A} = L \\otimes A\\)",
+                    "correct": false
+                },
+                {
+                    "text": "\\(\\tilde{A} = A \\otimes I_N\\)",
+                    "correct": false
+                }
+                ],
+                "type": "single"
+            }
             ]
         }
     },
@@ -804,7 +692,7 @@ const JSON_content = {
             "timeLimit": 600,
             "questions": [
             {
-                "question": "Чему эквивалентно требование синхронизации выхода по лемме?",
+                "question": "Чему эквивалентно требование синхронизации выхода?",
                 "answers": [
                 {
                     "text": "\\(\\lim_{t \\to \\infty} \\|x_i(t) - x_j(t)\\| = 0\\) для всех \\(i,j\\)",
@@ -840,7 +728,7 @@ const JSON_content = {
                 "type": "single"
             },
             {
-                "question": "По теореме 4.1, когда система синхронна?",
+                "question": "Когда система синхронна?",
                 "answers": [
                 {
                     "text": "Матрицы \\(\\bar{A}_i = A - \\lambda_i(L) b c^\\mathrm{T}\\) гурвицевы для \\(i=2,\\dots,N\\)",
@@ -894,24 +782,6 @@ const JSON_content = {
                 "type": "single"
             },
             {
-                "question": "После диагонализации ошибки получаются уравнения вида:",
-                "answers": [
-                {
-                    "text": "\\(\\dot{\\tilde{e}}_i(t) = (A - \\lambda_i(L) b c^\\mathrm{T}) \\tilde{e}_i(t)\\)",
-                    "correct": true
-                },
-                {
-                    "text": "\\(\\dot{\\tilde{e}}_i(t) = A \\tilde{e}_i(t)\\)",
-                    "correct": false
-                },
-                {
-                    "text": "\\(\\dot{\\tilde{e}}_i(t) = L \\tilde{e}_i(t)\\)",
-                    "correct": false
-                }
-                ],
-                "type": "single"
-            },
-            {
                 "question": "Выберите ВСЕ следствия условия синхронизации:",
                 "answers": [
                 {
@@ -946,24 +816,6 @@ const JSON_content = {
                 },
                 {
                     "text": "\\(k\\) влияет только на диагональ \\(L\\)",
-                    "correct": false
-                }
-                ],
-                "type": "single"
-            },
-            {
-                "question": "Для полного графа соотношение \\(\\bar{A}_i\\):",
-                "answers": [
-                {
-                    "text": "\\(\\bar{A}_i = A - k N b c^\\mathrm{T}\\), одинаково для всех \\(i=2,\\dots,N\\)",
-                    "correct": true
-                },
-                {
-                    "text": "Разные \\(\\lambda_i\\) для каждого \\(i\\)",
-                    "correct": false
-                },
-                {
-                    "text": "\\(\\lambda_i = 1\\) для всех \\(i\\)",
                     "correct": false
                 }
                 ],
@@ -1147,24 +999,6 @@ const JSON_content = {
                 "type": "single"
             },
             {
-                "question": "Какой вектор удовлетворяет \\(\\hat{\\omega}^\\mathrm{T} L = 0^\\mathrm{T}\\)?",
-                "answers": [
-                {
-                    "text": "Нормированный левый собственный вектор \\(L\\) для \\(\\lambda_1 = 0\\)",
-                    "correct": true
-                },
-                {
-                    "text": "Правый собственный вектор \\(L\\)",
-                    "correct": false
-                },
-                {
-                    "text": "Вектор всех единиц",
-                    "correct": false
-                }
-                ],
-                "type": "single"
-            },
-            {
                 "question": "По теореме о синхронной траектории, выходы агентов:",
                 "answers": [
                 {
@@ -1237,25 +1071,7 @@ const JSON_content = {
                 "type": "single"
             },
             {
-                "question": "Почему член с \\(L\\) исчезает при умножении на \\(\\hat{\\omega}\\)?",
-                "answers": [
-                {
-                    "text": "\\(\\hat{\\omega}^\\mathrm{T}} L = 0^\\mathrm{T}\\)",
-                    "correct": true
-                },
-                {
-                    "text": "\\(L \\hat{\\omega} = 0\\)",
-                    "correct": false
-                },
-                {
-                    "text": "\\(L = 0\\)",
-                    "correct": false
-                }
-                ],
-                "type": "single"
-            },
-            {
-                "question": "Для какой структуры связи матрица Лапласа \\(L = \\begin{pmatrix} 0 & 0 \\\\ -1 & 1 \\end{pmatrix}\\)?",
+                "question": "Для какой структуры связи матрица Лапласа имеет вид \\(L = \\begin{pmatrix} 0 & 0 \\\\ -1 & 1 \\end{pmatrix}\\)?",
                 "answers": [
                 {
                     "text": "\"Лидер-последователь\"",
@@ -1564,42 +1380,6 @@ const JSON_content = {
                 "type": "single"
             },
             {
-                "question": "Что такое нормированная матрица Лапласа \\(\\hat{L}\\) для сильно связанных агентов?",
-                "answers": [
-                {
-                    "text": "\\(\\hat{L} = (\\mathrm{diag}(1/l_{ii})) L\\)",
-                    "correct": true
-                },
-                {
-                    "text": "\\(\\hat{L} = L / \\mathrm{trace}(L)\\)",
-                    "correct": false
-                },
-                {
-                    "text": "\\(\\hat{L} = L^{-1}\\)",
-                    "correct": false
-                }
-                ],
-                "type": "single"
-            },
-            {
-                "question": "Какова динамика управляемого агента с локальным опорным сигналом?",
-                "answers": [
-                {
-                    "text": "\\(\\dot{x}_i(t) = (A - k b c^\\mathrm{T}) x_i(t) + k b y_{si}(t)\\)",
-                    "correct": true
-                },
-                {
-                    "text": "\\(\\dot{x}_i(t) = A x_i(t) + k b y_{si}(t)\\)",
-                    "correct": false
-                },
-                {
-                    "text": "\\(\\dot{x}_i(t) = A x_i(t) - k b c^\\mathrm{T} y_{si}(t)\\)",
-                    "correct": false
-                }
-                ],
-                "type": "single"
-            },
-            {
                 "question": "Для структуры лидер-последователь агент-лидер имеет:",
                 "answers": [
                 {
@@ -1648,64 +1428,6 @@ const JSON_content = {
                 },
                 {
                     "text": "\\(N\\) для всех \\(i\\)",
-                    "correct": false
-                }
-                ],
-                "type": "single"
-            },
-            {
-                "question": "По следствию 2, синхронизация лидер-последователь с безцикловым графом требует:",
-                "answers": [
-                {
-                    "text": "Устойчивости управляемых агентов \\(A - k b c^\\mathrm{T}\\)",
-                    "correct": true
-                },
-                {
-                    "text": "Устойчивости матрицы \\(A\\)",
-                    "correct": false
-                },
-                {
-                    "text": "Полносвязного графа",
-                    "correct": false
-                }
-                ],
-                "type": "single"
-            },
-            {
-                "question": "Выберите ВСЕ особенности нормализованной матрицы \\(\\hat{L}\\) сильно связанных агентов:",
-                "answers": [
-                {
-                    "text": "\\(\\hat{l}_{ii} = 1\\)",
-                    "correct": true
-                },
-                {
-                    "text": "\\(-1 \\le \\hat{l}_{ij} \\le 0\\), \\(i \\neq j\\)",
-                    "correct": true
-                },
-                {
-                    "text": "\\(\\hat{L} \\mathbf{1} = 0\\)",
-                    "correct": true
-                },
-                {
-                    "text": "\\(|\\lambda_i| \\le 2\\)",
-                    "correct": true
-                }
-                ],
-                "type": "multiple"
-            },
-            {
-                "question": "В топологиях 'путь' и 'звезда' условие синхронизации сводится к устойчивости:",
-                "answers": [
-                {
-                    "text": "\\(\\bar{A} = A - k b c^\\mathrm{T}\\)",
-                    "correct": true
-                },
-                {
-                    "text": "\\(A - k N b c^\\mathrm{T}\\)",
-                    "correct": false
-                },
-                {
-                    "text": "\\(A\\) самой по себе",
                     "correct": false
                 }
                 ],
@@ -1996,24 +1718,6 @@ const JSON_content = {
                 "type": "single"
             },
             {
-                "question": "Выход агента \\(y_i(t)\\) выражается как:",
-                "answers": [
-                {
-                    "text": "\\(y_i(t) = c^\\mathrm{T} \\tilde{x}_i(t) + c^\\mathrm{T} x_s(t)\\)",
-                    "correct": true
-                },
-                {
-                    "text": "\\(y_i(t) = c^\\mathrm{T} x_s(t)\\)",
-                    "correct": false
-                },
-                {
-                    "text": "\\(y_i(t) = c^\\mathrm{T} \\tilde{x}_i(t)\\)",
-                    "correct": false
-                }
-                ],
-                "type": "single"
-            },
-            {
                 "question": "Что описывает \\(\\tilde{x}_i(t)\\) для \\(i=1,\\dots,N-1\\)?",
                 "answers": [
                 {
@@ -2048,64 +1752,6 @@ const JSON_content = {
                 }
                 ],
                 "type": "single"
-            },
-            {
-                "question": "В примере колонны машин локальный опорный сигнал \\(y_{s2}(t)\\):",
-                "answers": [
-                {
-                    "text": "\\(\\upsilon_1(t)\\) - скорость лидера",
-                    "correct": true
-                },
-                {
-                    "text": "\\(\\frac{1}{2}(\\upsilon_1(t) + \\upsilon_3(t))\\)",
-                    "correct": false
-                },
-                {
-                    "text": "\\(\\upsilon_2(t)\\)",
-                    "correct": false
-                }
-                ],
-                "type": "single"
-            },
-            {
-                "question": "Выберите ВСЕ особенности полносвязных сетей:",
-                "answers": [
-                {
-                    "text": "Изначально синхронизированные агенты остаются синхронизированными",
-                    "correct": true
-                },
-                {
-                    "text": "Аналог теории среднего поля",
-                    "correct": true
-                },
-                {
-                    "text": "Точная оценка сходимости ошибки синхронизации",
-                    "correct": true
-                },
-                {
-                    "text": "Работает только для \\(N=2\\)",
-                    "correct": false
-                }
-                ],
-                "type": "multiple"
-            },
-            {
-                "question": "В модели автомобиля используется аппроксимация какого порядка?",
-                "answers": [
-                {
-                    "text": "Первого порядка для динамики скорости",
-                    "correct": true
-                },
-                {
-                    "text": "Второго порядка",
-                    "correct": false
-                },
-                {
-                    "text": "Нуля порядка (статическая)",
-                    "correct": false
-                }
-                ],
-                "type": "single"
             }
             ]
         }
@@ -2117,19 +1763,7 @@ const menuToggle = document.getElementById('menuToggle');
 const sideMenu = document.getElementById('sideMenu');
 const tabButtons = document.querySelectorAll('.tab-btn');
 const tabContent = document.getElementById('tab-content');
-
-
-const modal = document.createElement('div');
-modal.className = 'modal';
-modal.innerHTML = `
-    <div class="modal-content">
-        <h2 id="modal-title">Введите ваше имя</h2>
-        <input type="text" id="user-name" placeholder="Имя">
-        <button id="modal-confirm">Начать тест</button>
-    </div>
-`;
-document.body.appendChild(modal);
-
+const modal = document.getElementById('modal');
 
 // Боковое меню
 menuToggle.addEventListener('click', () => sideMenu.classList.toggle('active'));
@@ -2146,7 +1780,6 @@ sideMenu.addEventListener('click', e => {
     }
 });
 
-
 function showModal({ title, content, onConfirm, requireName = false }) {
     modal.innerHTML = `
         <div class="modal-content">
@@ -2159,11 +1792,9 @@ function showModal({ title, content, onConfirm, requireName = false }) {
         </div>
     `;
 
-
     const confirmBtn = modal.querySelector('#modal-confirm');
     const closeBtn = modal.querySelector('#modal-close');
     const nameInput = requireName ? modal.querySelector('#user-name') : null;
-
 
     function close() {
         modal.classList.remove('active');
@@ -2171,11 +1802,9 @@ function showModal({ title, content, onConfirm, requireName = false }) {
         document.removeEventListener('click', outsideClickHandler);
     }
 
-
     function outsideClickHandler(e) {
         if (!modal.querySelector('.modal-content').contains(e.target)) close();
     }
-
 
     closeBtn.addEventListener('click', close);
     confirmBtn.addEventListener('click', e => {
@@ -2186,7 +1815,6 @@ function showModal({ title, content, onConfirm, requireName = false }) {
             onConfirm?.();
         }
     });
-
 
     if (requireName && nameInput) {
         nameInput.addEventListener('input', () => {
@@ -2199,16 +1827,13 @@ function showModal({ title, content, onConfirm, requireName = false }) {
         confirmBtn.disabled = false;
     }
 
-
     document.getElementById('content').classList.add('main-blur');
     modal.classList.add('active');
     setTimeout(() => document.addEventListener('click', outsideClickHandler), 100);
 }
 
-
 let currentTopicKey = null;
 let currentTab = "theory";
-
 
 // Заполняем боковое меню темами
 function renderMenu() {
@@ -2228,7 +1853,6 @@ function renderMenu() {
 
 function renderMathJax() {
     if (typeof MathJax === 'undefined') return;
-
     try {
         if (MathJax.typesetPromise) {
             MathJax.typesetPromise([document.getElementById('tab-content')]);
@@ -2268,7 +1892,6 @@ function updateTabButtons() {
 document.querySelector('.tabs').addEventListener('click', e => {
     const btn = e.target.closest('.tab-btn');
     if (!btn || !currentTopicKey) return;
-
 
     if (btn.dataset.tab === 'test') {
         showModal({
@@ -2311,7 +1934,7 @@ function showContent() {
     }
     const topic = JSON_content[currentTopicKey];
     const tabContent = document.getElementById('tab-content');
-   
+
     if (currentTab === 'theory') {
         tabContent.innerHTML = `<section>${topic.theory}</section>`;
         setTimeout(renderMathJax, timeout);
@@ -2329,7 +1952,6 @@ function showContent() {
         behavior: 'smooth'
     });
 }
-
 
 function renderTest(testData) {
     if (testTimer) clearInterval(testTimer);
